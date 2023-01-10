@@ -1,0 +1,22 @@
+select * from cars;
+
+select brand, model, price from cars;
+select count(*) as quantity_cars from cars;
+select * from cars where brand = 'Hyundai';
+select * from cars where color = 'Red' or  color = 'Blue' order by color desc;
+select * from cars where year_of_issue in(2000, 2010);
+select  count(*) as quantity_chevrolet from cars where brand = 'Chevrolet';
+select round(avg(year_of_issue)) as average_year from cars;
+select * from cars where brand = 'Audi' or brand = 'Toyota' or brand = 'Kia' or brand = 'Ford' order by brand;
+select * from cars where model like 'T%';
+select model from cars where model like '%e';
+select distinct brand from cars where length(brand)=5;
+select sum(price) as amounts_price from cars where brand = 'Mercedes-Benz';
+select price as min_max_price, brand, model, year_of_issue, color from cars
+where price = (select min(price) from cars) or price = (select max(price) from cars);
+select * from cars where brand not in('Toyota');
+select price as ten_expensive_cars, brand, model, color, year_of_issue from cars order by price desc limit 10;
+select * from cars where year_of_issue between 2005 and 2015 order by year_of_issue;
+select * from cars where year_of_issue not between 1995 and 2005 order by year_of_issue;
+select color, count(*) from cars  group by color having count(*)>1 order by count(*) desc;
+select * from cars where color = 'Khaki' order by brand;
